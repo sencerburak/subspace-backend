@@ -9,7 +9,7 @@ use Tests\TestCase;
 
 class MessageTest extends TestCase
 {
-    public function messageProvider(): array
+    public static function messageProvider(): array
     {
         return [
             [1, 1, 1, 'Hello, world!', '2023-06-01 12:00:00'],

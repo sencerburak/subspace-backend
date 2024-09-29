@@ -9,7 +9,7 @@ use Tests\TestCase;
 
 class ChatGroupTest extends TestCase
 {
-    public function chatGroupProvider(): array
+    public static function chatGroupProvider(): array
     {
         return [
             [1, 'General'],
