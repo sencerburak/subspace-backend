@@ -6,6 +6,7 @@ namespace Tests\Domain\ChatGroup;
 
 use App\Domain\ChatGroup\ChatGroup;
 use Tests\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 class ChatGroupTest extends TestCase
 {
@@ -18,11 +19,7 @@ class ChatGroupTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider chatGroupProvider
-     * @param int    $id
-     * @param string $name
-     */
+    #[DataProvider('chatGroupProvider')]
     public function testGetters(int $id, string $name)
     {
         $chatGroup = new ChatGroup($id, $name);
@@ -31,11 +28,7 @@ class ChatGroupTest extends TestCase
         $this->assertEquals($name, $chatGroup->getName());
     }
 
-    /**
-     * @dataProvider chatGroupProvider
-     * @param int    $id
-     * @param string $name
-     */
+    #[DataProvider('chatGroupProvider')]
     public function testJsonSerialize(int $id, string $name)
     {
         $chatGroup = new ChatGroup($id, $name);

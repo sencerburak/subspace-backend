@@ -6,6 +6,7 @@ namespace Tests\Domain\User;
 
 use App\Domain\User\User;
 use Tests\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 class UserTest extends TestCase
 {
@@ -20,11 +21,7 @@ class UserTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider userProvider
-     * @param int    $id
-     * @param string $username
-     */
+    #[DataProvider('userProvider')]
     public function testGetters(int $id, string $username)
     {
         $user = new User($id, $username);
@@ -33,11 +30,7 @@ class UserTest extends TestCase
         $this->assertEquals($username, $user->getUsername());
     }
 
-    /**
-     * @dataProvider userProvider
-     * @param int    $id
-     * @param string $username
-     */
+    #[DataProvider('userProvider')]
     public function testJsonSerialize(int $id, string $username)
     {
         $user = new User($id, $username);
