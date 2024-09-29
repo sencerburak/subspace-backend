@@ -66,7 +66,11 @@ class SqliteChatGroupRepository implements ChatGroupRepository
     public function isUserInGroup(int $userId, int $groupId): bool
     {
         try {
-            $stmt = $this->db->prepare('SELECT COUNT(*) FROM user_group WHERE user_id = :user_id AND group_id = :group_id');
+            $stmt = $this->db->prepare('
+            SELECT COUNT(*) 
+            FROM user_group 
+            WHERE user_id = :user_id AND group_id = :group_id
+            ');
             $stmt->execute(['user_id' => $userId, 'group_id' => $groupId]);
             return (bool)$stmt->fetchColumn();
         } catch (PDOException $e) {
