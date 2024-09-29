@@ -6,10 +6,11 @@ namespace Tests\Domain\Message;
 
 use App\Domain\Message\Message;
 use Tests\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 class MessageTest extends TestCase
 {
-    public function messageProvider(): array
+    public static function messageProvider(): array
     {
         return [
             [1, 1, 1, 'Hello, world!', '2023-06-01 12:00:00'],
@@ -18,14 +19,7 @@ class MessageTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider messageProvider
-     * @param int    $id
-     * @param int    $groupId
-     * @param int    $userId
-     * @param string $content
-     * @param string $createdAt
-     */
+    #[DataProvider('messageProvider')]
     public function testGetters(int $id, int $groupId, int $userId, string $content, string $createdAt)
     {
         $message = new Message($id, $groupId, $userId, $content, $createdAt);
@@ -37,14 +31,7 @@ class MessageTest extends TestCase
         $this->assertEquals($createdAt, $message->getCreatedAt());
     }
 
-    /**
-     * @dataProvider messageProvider
-     * @param int    $id
-     * @param int    $groupId
-     * @param int    $userId
-     * @param string $content
-     * @param string $createdAt
-     */
+    #[DataProvider('messageProvider')]
     public function testJsonSerialize(int $id, int $groupId, int $userId, string $content, string $createdAt)
     {
         $message = new Message($id, $groupId, $userId, $content, $createdAt);
