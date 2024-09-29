@@ -14,8 +14,11 @@ abstract class MessageAction extends Action
     protected MessageRepository $messageRepository;
     protected ChatGroupRepository $chatGroupRepository;
 
-    public function __construct(LoggerInterface $logger, MessageRepository $messageRepository, ChatGroupRepository $chatGroupRepository)
-    {
+    public function __construct(
+        LoggerInterface $logger,
+        MessageRepository $messageRepository,
+        ChatGroupRepository $chatGroupRepository
+    ) {
         parent::__construct($logger);
         $this->messageRepository = $messageRepository;
         $this->chatGroupRepository = $chatGroupRepository;

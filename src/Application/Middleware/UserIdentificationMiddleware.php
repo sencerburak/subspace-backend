@@ -26,12 +26,9 @@ class UserIdentificationMiddleware implements Middleware
         if (empty($userId)) {
             throw new HttpUnauthorizedException($request, 'User-Id header is required');
         }
-        
+
         try {
             $user = $this->userRepository->findUserOfId((int) $userId);
-            if ($user === null) {
-                throw new HttpUnauthorizedException($request, 'Invalid User-Id');
-            }
             return $handler->handle($request->withAttribute('user', $user));
         } catch (\Exception $e) {
             throw new HttpUnauthorizedException($request, 'Invalid User-Id');

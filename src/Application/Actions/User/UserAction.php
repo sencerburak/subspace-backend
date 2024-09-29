@@ -19,5 +19,3 @@ abstract class UserAction extends Action
         $this->userRepository = $userRepository;
     }
 }
-
-
