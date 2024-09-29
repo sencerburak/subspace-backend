@@ -8,7 +8,6 @@ use App\Domain\Message\Message;
 use Tests\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
 
-
 class MessageTest extends TestCase
 {
     public static function messageProvider(): array
